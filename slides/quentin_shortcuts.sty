@@ -1,0 +1,375 @@
+%%%%%%%%%%%%%%%  PACKAGES  %%%%%%%%%%%%
+\usepackage{xspace}
+\usepackage{mathrsfs}
+\usepackage{enumitem}  % used for Lemma 4)i)   environement
+\usepackage{thmtools,thm-restate}  % used to repeat theorems in appendix
+\usepackage{aliascnt} % alias counter to define Problem and Model environment
+
+
+%%% CREF %%%%%%%%%%%%%%%%%%%%
+%\theoremstyle{definition}
+%\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}[theorem]{Assumption}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{exemple}{Exemple}
+
+%\theoremstyle{remark}
+%\newtheorem{remark}[theorem]{Remark}
+
+
+\crefname{pb_multiline}{Problem}{Problems}
+\creflabelformat{pb_multiline}{#2{\upshape(#1)}#3}
+
+% By Mathurin: define model and problem environment
+\newaliascnt{problem}{equation}
+\aliascntresetthe{problem}
+\creflabelformat{problem}{#2\textup{(#1)}#3}
+
+\makeatletter
+\def\problem{$$\refstepcounter{problem}}
+\def\endproblem{\eqno \hbox{\@eqnnum}$$\@ignoretrue}
+\makeatother
+
+\newaliascnt{model}{equation}
+\aliascntresetthe{model}
+\creflabelformat{model}{#2\textup{(#1)}#3}
+
+\makeatletter
+\def\model{$$\refstepcounter{model}}
+\def\endmodel{\eqno \hbox{\@eqnnum}$$\@ignoretrue}
+\makeatother
+
+\crefname{model}{Model}{Models}
+\Crefname{problem}{Problem}{Problems}
+\crefname{problem}{Pb.}{Pbs.}
+\crefname{algorithm}{Algorithm}{Algorithms}
+\crefname{figure}{Figure}{Figures}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{appendix}{Appendix}{Appendix}
+\crefname{assumption}{Assumption}{Assumptions}
+
+\usepackage{enumitem}
+\newlist{lemmaenum}{enumerate}{1} % also creates a counter called 'lemmaenum'
+\setlist[lemmaenum]{label=\emph{\roman*)}, ref=\thetheorem~\emph{\roman*)}}
+\crefalias{lemmaenumi}{lemma}
+
+\newlist{thmenum}{enumerate}{1} % also creates a counter called 'lemmaenum'
+\setlist[thmenum]{label=\emph{\roman*)}, ref=\thetheorem~\emph{\roman*)}}
+\crefalias{thmenumi}{theorem}
+
+
+%%%%%%%%%%%%%%%%%%%% MATH OPERATORS %%%%%%%%%%%%%
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\pen}{pen}
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator{\proxdiv}{\text{proxdiv}}
+\DeclareMathOperator{\ST}{ST}
+\DeclareMathOperator{\HT}{HT}
+
+\DeclareMathOperator{\act}{\mathcal{S}}
+\DeclareMathOperator{\STbis}{\mathcal{S}}
+\DeclareMathOperator{\BST}{BST}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\SpCl}{ClSqrt}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\glso}{glasso}
+\DeclareMathOperator{\infconv}{\square}
+\DeclareMathOperator{\Span}{Span}
+
+\def\diag{\mathop{\rm diag}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Images
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx}
+\graphicspath{{images/},{prebuiltimages/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Maths
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator*{\argmin}{\mathrm{arg\,min}}
+\DeclareMathOperator*{\argmax}{\mathrm{arg\,max}}
+\newcommand{\abs}[1]{\left \lvert #1 \right \rvert}
+\newcommand{\bigo}{\mathcal{O}}
+\newcommand{\cov}{\text{cov}}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\difft}{\mathrm{dt}}
+\newcommand{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand{\nucnorm}[1]{\left \lVert #1 \right \rVert_{\mathscr{S},1}}
+\newcommand{\normin}[1]{\lVert #1 \rVert}
+\newcommand{\dom}{\mathrm{dom}\:}
+\newcommand{\Exp}{\mathbb{E}}
+% \newcommand{\eqdef}{:=}
+\newcommand{\eqdef}{\triangleq}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\dualg}{\Delta_{\mathcal{G}}}
+\newcommand{\dualsg}{\Delta_{w}^{\tau}}
+\newcommand{\dualsgpart}{\Delta_{w_g}^{\tau}}
+\newcommand{\dualsqrt}[1]{\Delta_{X,{#1}}}
+\newcommand{\Var}{\mathbb V\mathrm{ar}}
+\newcommand{\scal}[1]{\langle {#1} \rangle}
+
+\newcommand{\absin}[1]{\lvert #1 \rvert}
+\newcommand{\amax}{\mathop{\mathrm{max\!\!\!\phantom{g}}}}
+\newcommand{\amin}{\mathop{\mathrm{min\!\!\!\phantom{g}}}}
+\def\trace{\mathop{\mathrm{tr}}}
+
+
+\newcommand{\discset}[1]{ \left\{ #1 \right\} } % discrete set
+\newcommand{\discsetin}[1]{ \{ #1 \} }
+\newcommand{\condset}[2]{ \left\{ #1 \,:\, #2 \right\} } % conditional set
+% to have uniform symbol for: x \in X "such that" x blabla
+\newcommand{\condsetin}[2]{ \{ #1 \,:\, #2 \} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% ACRONYMS %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\sgcl}{SGCL\xspace}
+\newcommand{\sgclme}{CLaR\xspace}
+\newcommand{\mtl}{MTL\xspace}
+\newcommand{\altest}{AltEst\xspace}
+\newcommand{\mtlme}{MTLR\xspace}
+\newcommand{\mle}{$\ell_{2,1}$-MLE\xspace}
+\newcommand{\mler}{$\ell_{2,1}$-MLER\xspace}
+\newcommand{\mrceo}{MRCE\xspace}
+\newcommand{\mrce}{$\ell_{2,1}$-MRCE\xspace}
+\newcommand{\mrcer}{$\ell_{2,1}$-MRCER\xspace}
+\newcommand{\SGCL}{\mathrm{SGCL}}
+\newcommand{\US}{\mathrm{CLaR}}
+\newcommand{\MTL}{\mathrm{MTL}}
+\newcommand{\MLE}{\ell_{2,1}\mathrm{-MLE}}
+\newcommand{\MLER}{\ell_{2,1}\mathrm{MLER}}
+\newcommand{\MRCEO}{\mathrm{MRCE}}
+\newcommand{\MRCE}{\ell_{2,1}\mathrm{MRCE}}
+\newcommand{\MRCER}{\ell_{2,1}\mathrm{MRCER}}
+\newcommand{\MTLME}{\mathrm{MTLR}}
+\newcommand{\SNR}{\mathrm{SNR}}
+\newcommand{\EMP}{\mathrm{EMP}}
+\newcommand{\GLS}{\mathrm{GLS}}
+
+
+\newcommand{\backwardfull}{backward differentiation\xspace}
+\newcommand{\forwardfull}{forward differentiation\xspace}
+\newcommand{\implicitfull}{implicit differentiation\xspace}
+\newcommand{\ourfull}{implicit forward differentiation\xspace}
+\newcommand{\sbmofull}{sequential model based optimization\xspace}
+
+\newcommand{\our}{Imp. F. Iterdiff.\xspace}
+\newcommand{\backward}{B. Iterdiff.\xspace}
+\newcommand{\forward}{F. Iterdiff.\xspace}
+\newcommand{\implicit}{Implicit\xspace}
+
+\newcommand{\fiter}{F. Iterdiff.\xspace}
+\newcommand{\fiterfull}{Forward Iterative Differentiation\xspace}
+\newcommand{\imp}{Implicit diff.\xspace}
+\newcommand{\impfull}{Implicit Differentiation\xspace}
+
+
+\newcommand{\us}{CLaR\xspace}
+\newcommand{\usfull}{Concomitant Lasso with Repetitions\xspace}
+\newcommand{\sgclfull}{Smoothed Generalized Concomitant Lasso\xspace}
+\newcommand{\mtlfull}{Multi-Task Lasso\xspace}
+\newcommand{\mtlrfull}{Multi-Task Lasso with Repetitions\xspace}
+\newcommand{\mlefull}{$\ell_{2,1}$-Maximum Likelihood\xspace}
+% \newcommand{\mlefull}{$\ell_{2,1}$-Alternate Estimation\xspace}
+\newcommand{\mlerfull}{Maximum Likelihood with Repetitions\xspace}
+% \newcommand{\mlerfull}{$\ell_{2,1}$-Alternate Estimation with Repetitions\xspace}
+% \newcommand{\mlefull}{Maximum Likelihood Estimator\xspace}
+\newcommand{\mrcefull}{ Multivariate Regression with Covariance Estimation \xspace}
+\newcommand{\altestfull}{Alternate Estimation \xspace}
+% \newcommand{\mlerfull}{Maximum Likelihood Estimator with repetitions\xspace}
+\newcommand{\msqrtlfull}{Multi-Task Schatten-1 Lasso\xspace}
+\newcommand{\msqrtlrfull}{Multi-Task Schatten-1 Lasso with Repetitions\xspace}
+\newcommand{\sqrtlfull}{Square Root Lasso\xspace}
+\newcommand{\ulafull}{Unajusted Langevin Algorithm\xspace}
+\newcommand{\myulafull}{Moreau-Yoshida Unajusted Langevin Algorithm\xspace}
+\newcommand{\tulafull}{Tamed Unajusted Langevin Algorithm\xspace}
+
+
+
+\theoremstyle{plain}
+\newtheorem{The}{Theorem}
+\newtheorem{Cor}[The]{Corollary}
+\newtheorem{Lem}[The]{Lemma}
+\newtheorem{Prop}[The]{Proposition}
+\newtheorem{Algo}{Algorithm}
+\newtheorem{Exo}{Exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%  COMMENTS %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\TODO}[1]{\textbf{\textcolor{red}{TO~DO: #1}}}
+
+% ACTIVATE this block when writing (disactivate for SUBMISSION)
+\usepackage[textwidth=2.9cm, textsize=tiny]{todonotes}
+\setlength{\marginparwidth}{2.9cm} % TO COMMENT if todonotes is not used
+% MM/ todonotes generate many warnings, we ignore them with the silence package:
+\usepackage{silence}
+\WarningFilter{latex}{Marginpar on page}
+
+% ACTIVATE this part when submitting
+% \usepackage[textwidth=2.0cm, textsize=scriptsize,disable]{todonotes}
+
+\newcommand{\jo}[1]{\todo[color=green!20]{{\bf Jo:} #1}}
+\newcommand{\jrs}[1]{\textcolor{red}{#1}}
+\newcommand{\alex}[1]{\textcolor{orange}{#1}}
+\newcommand{\ag}[1]{\todo[color=orange!20]{{\bf Alex:} #1}}
+\newcommand{\mathurin}[1]{\textcolor{purple}{#1}}
+\newcommand{\mm}[1]{\todo[color=purple!20]{{\bf Mathurin:} #1}}
+\newcommand{\qbe}[1]{\todo[color=blue!20]{{\bf qbe:} #1}}
+\newcommand{\quentin}[1]{\textcolor{blue}{#1}}
+\newcommand{\mblondel}[1]{\textcolor{red}{#1}}
+\newcommand{\qklopf}[1]{\todo[color=gray!20]{{\bf QKlopf:} #1}}
+
+\newcommand{\mb}[1]{\textcolor{magenta}{\texttt{mblondel@} #1}}
+\newcommand{\sam}[1]{\todo[color=purple!20]{{\bf Sam:} #1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Latin and other classical abbreviations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\iid}{{i.i.d.~}}
+\newcommand{\ie}{{\em i.e.,~}}
+\newcommand{\wlg}{{\em w.l.o.g.~}}
+\newcommand{\eg}{{\em e.g.,~}}
+\newcommand{\lcf}{{\em cf.~}}
+\newcommand{\resp}{{\em resp.~}}
+\newcommand{\etal}{{\em et al.~}}
+\newcommand{\wrt}{{\em w.r.t.~}}
+\newcommand{\aka}{{\em a.k.a.~}}
+\newcommand{\st}{{s.t.~}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% CAPITAL GREEK %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Beta}{\mathrm{B}}
+\newcommand{\Betahat}{\hat\Beta}
+\newcommand{\Epsilon}{\mathrm{E}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SETS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+% bb letters
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+%\newcommand{\bbI{\mathbb{I}}
+\newcommand{\bbI}{\mathds{1}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+\newcommand{\scrS}{\mathscr{S}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% article specific
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Betaopt}{\hat \Beta}
+\newcommand{\Sigmaopt}{\hat \Sigma}
+\newcommand{\Gammaopt}{\hat \Gamma}
+\newcommand{\betaopt}{\hat \beta}
+\newcommand{\Betastar}{\Beta^*}
+\newcommand{\betastar}{\beta^*}
+\newcommand{\betahat}{\hat \beta}
+\newcommand{\thetahat}{\hat \theta}
+\newcommand{\sigmahat}{\hat \sigma}
+\newcommand{\Thetaopt}{\hat \Theta}
+\newcommand{\Sopt}{\hat{\mathrm{S}}}
+\newcommand{\Smin}{\underline{S}}
+\newcommand{\sigmamin}{\underline{\sigma}}
+\newcommand{\sigmamax}{\bar{\sigma}}
+\newcommand{\kappamin}{\underline{\kappa}}
+\newcommand{\kappamax}{\bar{\kappa}}
+
+\newcommand{\Snoise}{S}  % to be able to change it easily
+\newcommand{\Snoiseopt}{\hat{S}}  % to be able to change it easily
+
+\newcommand{\jth}{j^{th}}
+\newcommand{\ith}{i^{th}}
+
+\newcommand{\jac}{\cJ}
+\newcommand{\hbeta}{\hat \beta}
+
+
+\newcommand{\lambdavect}{\Lambda}
+
+
+
+\newcommand{\pluseq}{\mathrel{+}=}
+\newcommand{\minuseq}{\mathrel{-}=}
+\newcommand{\timeseq}{\mathrel{*}=}
+
+\newcommand{\grad}{\texttt{grad}}
+\newcommand{\lmax}{\rm{lmax}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Indicator function
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{dsfont}
+\newcommand{\ind}{\mathds{1}}  % REQUIRE \dsfont
+\def\1{\mathbf 1}

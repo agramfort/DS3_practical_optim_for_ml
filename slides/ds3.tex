@@ -1,0 +1,106 @@
+\documentclass[unknownkeysallowed]{beamer}
+\usepackage{beamer_js}
+\usepackage{quentin_shortcuts_beamer}
+
+
+\usepackage{biblatex}
+\addbibresource{references_all.bib}
+
+\graphicspath{{prebuiltimages/}, {images/}}
+
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+
+% labelformat=empty removes the "Figure" in the slides
+\usepackage[labelformat=empty]{caption}
+% \usepackage[labelformat=empty]{caption}
+\captionsetup[subfigure]{labelformat=empty}
+
+% package for centering + line breaking
+\usepackage{varwidth}
+\DeclareCaptionFormat{myformat}{%
+  % #1: label (e.g. "Table 1")
+  % #2: separator (e.g. ": ")
+  % #3: caption text
+  \begin{varwidth}{\linewidth}%
+    \centering
+    #1#2#3%
+  \end{varwidth}%
+}
+
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
+% \usepackage[titlenumbered,ruled,noend,algo2e]{algorithm2e}
+% \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+% \SetCommentSty{mycommfont}
+% \SetEndCharOfAlgoLine{}
+
+
+\begin{document}
+
+% introduction slide
+\begin{frame}
+
+   \bigskip
+   \bigskip
+
+   \begin{center}{\color{marron}
+       \huge
+      \textbf{Optimization for Machine Learning ``Hands On''}
+   }\end{center}
+   \bigskip
+   \begin{center}
+   \textbf{Alexandre Gramfort} (Inria) \\
+   \url{http://alexandre.gramfort.net/} \\
+   
+   
+  \bigskip
+   \textbf{Quentin Bertrand} (Inria) \\
+   \url{https://QB3.github.io} \\
+
+   \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%       PLAN     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+      \frametitle{Table of Contents}
+      \tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/hide,subsectionstyle=show/shaded]
+   \end{frame}
+}
+
+
+\input{sections/1_intro}
+\input{sections/2_gd}
+\input{sections/3_newton}
+\input{sections/4_sgd}
+\input{sections/5_cd}
+\input{sections/6_prox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[allowframebreaks]
+   \printbibliography
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}

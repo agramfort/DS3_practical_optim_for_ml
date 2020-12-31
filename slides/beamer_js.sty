@@ -1,0 +1,440 @@
+\usepackage{etex} %solve bugs with listings
+\usefonttheme[onlymath]{serif} % rounded shapes for maths
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}% accents (for pdf)
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage{dsfont}
+\usepackage[thicklines]{cancel}  % to strike out a text / text rayé
+\renewcommand{\CancelColor}{\red}
+%
+\usepackage{graphicx}
+\graphicspath{{images/},{prebuiltimages/},{../../sharedimages/}}
+
+\usepackage{amsmath,amssymb,amsfonts,amscd}
+
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{caption}
+% \usepackage{algpseudocode}
+\hypersetup{colorlinks,linkcolor=,urlcolor=blue}
+\usepackage{latexsym}
+\usepackage{fancyhdr} % for page layout
+\usepackage{stmaryrd} % for llbracket
+% \usepackage{transparent}   % for inkscape transparent style (in conflict with tikz)
+\usepackage[absolute,overlay]{textpos} % texpos for special fixed positionning of an image
+\usepackage{multirow}
+\usepackage{blkarray} % block matrix
+\usepackage{xparse,soul} %  strikethrough text (barr\'e), \st
+
+\usepackage{mathtools} % to make boxes inside align env.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Movies
+\usepackage{animate}
+% \usepackage{movie15} % to be prefered?
+% \usepackage{media9}
+
+
+%\usepackage{amsbsy}
+%\usepackage{longtable}
+%\renewcommand{\labelitemii}{$\star$}
+%\renewcommand{\labelitemi}{$\bullet$}
+
+% to handle nice tables
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% citation/footenote in beamer
+\usepackage[backend=biber,style=verbose,citetracker=true]{biblatex}
+\renewcommand{\footnotesize}{\tiny} % size of footnotes
+\renewcommand\multicitedelim{\addsemicolon\space} % for footfullcite to have multiple elements separated by commas.
+
+\renewcommand{\footnoterule}{%
+\kern -3pt
+\hrule width \textwidth height 1.5pt
+\kern 3pt
+} % control the line before footnotes
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% footnote setting: (1), (2), etc.
+\usepackage{fnpct}
+\AdaptNoteOpt\footcite\multfootcite
+\renewcommand*{\thefootnote}{(\arabic{footnote})}
+
+% How to solve problem of comas between footfullcite
+\AdaptNoteOpt\footfullcite\multfootfullcite
+
+
+% Configure style for custom doubled line
+\newcommand*{\doublerule}{\hrule width \hsize height 1pt \kern 0.5mm \hrule width \hsize height 2pt}
+
+% Configure function to fill line with doubled line
+\newcommand\doublerulefill{\leavevmode\leaders\vbox{\hrule width .1pt\kern1pt\hrule}\hfill\kern0pt }
+
+
+\newcommand{\mytheorem}[2]{
+\doublerulefill\ \framebox{\textbf{#1}}\ \doublerulefill
+\vspace{0.1cm}
+
+#2
+
+\doublerulefill
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\beamersetuncovermixins{\opaqueness<1>{15}}{\opaqueness<2->{15}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\mode<presentation>
+{
+\usetheme{default}
+\setbeamertemplate{frametitle}
+{
+  \begin{centering}
+    \textbf{\insertframetitle}
+    \par
+  \end{centering}
+}
+
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[triangle]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors
+
+%\usecolortheme[named=macouleur]{structure}
+\definecolor{macouleur}{cmyk}{0.2,0.45,0.9,0}%{0.05,0.22,0.89,0}
+\definecolor{rltred}{rgb}{0.75,0,0}
+\definecolor{oneblue}{rgb}{0,0,0.75}
+\definecolor{marron}{rgb}{0.64,0.16,0.16}
+\definecolor{forestgreen}{rgb}{0.13,0.54,0.13}
+\definecolor{verte}{rgb}{0.13,0.74,0.23}
+\definecolor{marronchocolat}{cmyk}{0.15,0.32,0.59,0.19}
+\definecolor{parme}{cmyk}{0.05,0.22,0.19,0.5}
+\definecolor{rltgreen}{rgb}{0.5,0.01,0.9}%violet
+\definecolor{oneblue}{rgb}{0,0,0.75}
+\definecolor{purple}{rgb}{0.5,0.5,0.98}
+\definecolor{purpleone}{rgb}{0.9,0.5,0.5}
+\definecolor{dockerblue}{rgb}{0.11,0.56,0.98}
+\definecolor{myblue}{rgb}{0,0.2,0.4}%bien
+\definecolor{LightBack}{rgb}{0,0.2,0.4}%{0.2, 0.2,0.4}
+\definecolor{freeblue}{rgb}{0.25,0.41,0.88}
+\usecolortheme{rose}
+}
+
+\newcommand{\tbrown}[1]{\textcolor{brown}{#1}}
+
+
+\usecolortheme[named=marron]{structure}
+\setbeamercolor{block title}{use=structure,fg=white,bg=freeblue}
+%\setbeamercolor{math text}{fg=LightBack,bg=macouleur}
+\setbeamercolor{block body example}{bg=white}
+\beamertemplateroundedblocks
+\beamertemplateshadowblocks
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To add numbering
+\setbeamerfont{page number in head/foot}{size=\tiny}
+\setbeamertemplate{footline}[frame number]
+
+
+%\setbeamercolor{structure}{fg=marron,bg=white}
+
+
+\newcommand{\citer}[2]{\textcolor{brown}{#1}\nocite{#2}}
+
+
+% new version for algorithm:
+
+% FRENCH VERSION:
+% \usepackage[titlenumbered,ruled,noend,french,onelanguage]{algorithm2e}
+
+% ENGLISH VERSION:
+\usepackage[titlenumbered,ruled,noend,onelanguage]{algorithm2e}
+
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\SetEndCharOfAlgoLine{}
+\resetcounteronoverlays{algocf} % for overlay aware algorithms.
+\renewcommand{\thealgocf}{} % turn of caption numbering
+%% old version for algorithm:
+%\usepackage[algo2e]{algorithm2e}% http://csweb.ucc.ie/~dongen/LAF/Algorithms.pdf
+%
+%\usepackage{float}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 	        Algorithmes		             %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fancyvrb}                  % for fancy verbatim
+\usepackage{textcomp}
+\usepackage[space=true]{accsupp}
+% requires the latest version of package accsupp
+\newcommand{\copyablespace}{
+    \BeginAccSupp{method=hex,unicode,ActualText=00A0}
+\ %
+    \EndAccSupp{}
+}
+\usepackage[procnames]{listings}
+\lstset{%
+language   = Python,%
+% basicstyle = \ttfamily\setstretch{1},%
+columns    = fullflexible,%
+keywordstyle=\color{javared},
+firstnumber=100,
+frame=shadowbox,
+showstringspaces=false,
+morekeywords={import,from,class,def,for,while,if,is,in,elif,
+else,not,and,or,print,break,continue,return,True,False,None,access,
+as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+keywordstyle={\color{javared}\bfseries},
+commentstyle=\color{javagreen}, %vsomb_col white comments
+morecomment=[s][\color{javagreen}]{"""}{"""},
+upquote=true,
+%% style for number
+numbers=none,
+resetmargins=true,
+xleftmargin=10pt,
+linewidth= \linewidth,
+numberstyle=\tiny,
+stepnumber=1,
+numbersep=8pt, %
+frame=shadowbox,
+rulesepcolor=\color{black},
+procnamekeys={def,class},
+procnamestyle=\color{oneblue}\textbf,
+literate={*}{{\char42}}1
+         {-}{{\char45}}1
+         {\ }{{\copyablespace}}1
+}
+
+\lstnewenvironment{Exemplecode}{}{}
+
+
+\newenvironment{Framecode}[1]
+{\begin{frame}[fragile, environment=Framecode]{#1}}
+{\end{frame}}
+
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{marron}{rgb}{0.64,0.16,0.16}
+\definecolor{orange_js}{RGB}{230,159,0}
+
+\newcommand{\mybold}[1]{\textcolor{marron}{\textbf{#1}}}
+\newcommand{\cRm}[1]{\textsc{\romannumeral #1}}
+
+
+\AtBeginDocument{\setlength\abovedisplayskip{0pt}}% remove top align blanks
+
+% \usepackage{etex} %solve bugs with listings
+% %\documentclass[draft,compress,hyperref={pdfpagelabels=false}]{beamer}
+% %\usepackage{beamerthemeshadow}
+% \usefonttheme[onlymath]{serif}
+% % les arrondis sur les maths.
+% % \usepackage[T1]{fontenc}
+% % \usepackage[latin1]{inputenc}
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}% gestion des accents (pour les pdf)
+% \usepackage{lmodern}
+% %\usepackage{cite}
+% \usepackage{xcolor}
+% %\usepackage{footbib}
+% \usepackage{verbatim}
+% \usepackage{dsfont}
+% \usepackage{graphicx}
+% \graphicspath{{/images}, {/prebuiltimages}}
+% \usepackage{amsmath}
+% \usepackage{multicol}
+% \usepackage{amscd}
+% \usepackage{amsfonts}
+% \usepackage{subfigure}
+% % \usepackage{algpseudocode}
+% \usepackage{amssymb}
+% \usepackage{latexsym}
+% \usepackage{fancyhdr}
+% \usepackage{stmaryrd} %%llbracket
+% \usepackage{animate}
+% \usepackage{transparent}   % for inkscape transparent style
+% \usepackage[absolute,overlay]{textpos} % texpos for special fixed positionning of an image
+
+% \usepackage{multirow}
+% \usepackage{blkarray} % block matrix
+
+% % \usepackage{diagbox} % for table diagbox
+
+
+% % \usepackage{movie15} % to be prefered?
+% % \usepackage{media9}
+
+% %\usepackage{amsbsy}
+% %\usepackage{longtable}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \beamersetuncovermixins{\opaqueness<1>{15}}{\opaqueness<2->{15}}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \graphicspath{{images/}}
+%   % and their extensions so you won't have to specify these with
+%   % every instance of \includegraphics
+% %    \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+
+
+% \mode<presentation>
+% {
+% \usetheme{default}
+% \setbeamertemplate{frametitle}
+% {
+%   \begin{centering}
+%     \textbf{\insertframetitle}
+%     \par
+%   \end{centering}
+% }
+
+
+% \setbeamertemplate{navigation symbols}{}
+% \setbeamertemplate{bibliography item}[triangle]
+
+% %\usecolortheme[named=macouleur]{structure}
+
+% \definecolor{macouleur}{cmyk}{0.2,0.45,0.9,0}%{0.05,0.22,0.89,0}
+% \definecolor{rltred}{rgb}{0.75,0,0}
+% \definecolor{oneblue}{rgb}{0,0,0.75}
+% \definecolor{marron}{rgb}{0.64,0.16,0.16}
+% \definecolor{forestgreen}{rgb}{0.13,0.54,0.13}
+% \definecolor{verte}{rgb}{0.13,0.74,0.23}
+% \definecolor{marronchocolat}{cmyk}{0.15,0.32,0.59,0.19}
+% \definecolor{parme}{cmyk}{0.05,0.22,0.19,0.5}
+% \definecolor{rltgreen}{rgb}{0.5,0.01,0.9}%violet
+% \definecolor{oneblue}{rgb}{0,0,0.75}
+% \definecolor{purple}{rgb}{0.5,0.5,0.98}
+% \definecolor{purpleone}{rgb}{0.9,0.5,0.5}
+% \definecolor{dockerblue}{rgb}{0.11,0.56,0.98}
+% \definecolor{myblue}{rgb}{0,0.2,0.4}%bien
+% \definecolor{LightBack}{rgb}{0,0.2,0.4}%{0.2, 0.2,0.4}
+% \definecolor{freeblue}{rgb}{0.25,0.41,0.88}
+% \usecolortheme{rose}
+
+% }
+
+% \setbeamercolor{block title}{use=structure,fg=white,bg=freeblue}
+% %\setbeamercolor{math text}{fg=LightBack,bg=macouleur}
+% \setbeamercolor{block body example}{bg=white}
+% \beamertemplateroundedblocks
+% \beamertemplateshadowblocks
+
+% %\setbeamercolor{block title example}{use=structure text,fg=white,bg=forestgreen}
+% %\usecolortheme{sidebartab}
+
+% \usecolortheme[named=marron]{structure}
+% %\setbeamercolor{structure}{fg=marron,bg=white}
+
+
+
+% \newcommand{\citer}[2]{\textcolor{brown}{#1}\nocite{#2}}
+
+
+
+% \usepackage[titlenumbered,ruled,noend,english,onelanguage]{algorithm2e}
+% \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+% \SetCommentSty{mycommfont}
+% \SetEndCharOfAlgoLine{}
+% \resetcounteronoverlays{algocf} % for overlay aware algorithms.
+% \renewcommand{\thealgocf}{} % turn of caption numbering
+
+
+% \usepackage{float}
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%% 	        Algorithmes		             %%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage{fancyvrb}                  % for fancy verbatim
+% \usepackage{textcomp}
+% \usepackage[procnames]{listings}
+% \usepackage{setspace}
+% \lstset{%
+%  language   = python,%
+%  basicstyle = \ttfamily\setstretch{1},%
+%  columns    = flexible,%
+% keywordstyle=\color{javared},
+% firstnumber=100,
+% frame=shadowbox,
+% showstringspaces=false,
+% morekeywords={import,from,class,def,for,while,if,is,in,elif,
+% else,not,and,or,print,break,continue,return,True,False,None,access,
+% as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+% keywordstyle={\color{javared}\bfseries},
+% commentstyle=\color{javagreen}, %vsomb_col white comments
+% morecomment=[s][\color{javagreen}]{"""}{"""},
+% upquote=true,
+% %% style for number
+% numbers=none,
+% resetmargins=true,
+% xleftmargin=10pt,
+% linewidth= \linewidth,
+% numberstyle=\tiny,
+% stepnumber=1,
+% numbersep=8pt, %
+% frame=shadowbox,
+% rulesepcolor=\color{black},
+% procnamekeys={def,class},
+% procnamestyle=\color{oneblue}\textbf,
+% }
+
+% \lstnewenvironment{Exemplecode}{}{}
+
+
+% \newenvironment{Framecode}[1]
+% {\begin{frame}[fragile, environment=Framecode]{#1}}
+% {\end{frame}}
+
+
+% \definecolor{javared}{rgb}{0.6,0,0} % for strings
+% \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+% \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+% \definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+% \definecolor{marron}{rgb}{0.64,0.16,0.16}
+% \definecolor{orange_js}{RGB}{230,159,0}
+
+% \newcommand{\mybold}[1]{\textcolor{marron}{\textbf{#1}}}
+
+
+% %
+% % \lstset{%
+% %  upquote,%
+% %  literate   = {"}{\textquotedbl}1,%
+% %  language   = R,%
+% %  basicstyle = \ttfamily,%
+% %  columns    = flexible,%
+% % keywordstyle=\color{red},
+% % firstnumber=100,
+% % frame=shadowbox,
+% % commentstyle=\color{orange_js}, %vsomb_col white comments
+% % %% style for number
+% % numbers=none,
+% % resetmargins=true,
+% % xleftmargin=10pt,
+% % linewidth= \linewidth,
+% % numberstyle=\tiny,
+% % stepnumber=1,
+% % numbersep=8pt, %
+% % frame=shadowbox,
+% % rulesepcolor=\color{black},
+% % }
+% %
