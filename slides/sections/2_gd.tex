@@ -10,30 +10,33 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{One framework to rule them all: surrogate minimization}
+    \alert{Taylor expansion}
     \begin{align*}
-        f(w^{k+1})
+        f(w)
         \leq
         \underbrace{f(w^{k})
-        + \langle \nabla f (w^{k}), w^{k+1} - w^{k} \rangle
-        + \frac{L}{2} \normin{w^{k+1} - w^{k}}^2}_{\text{Surrogate function } \tilde{f}(x^{k+1})}
+        + \langle \nabla f (w^{k}), w - w^{k} \rangle
+        + \frac{L}{2} \normin{w - w^{k}}^2}_{\text{Surrogate function } \tilde{f}(w)}
     \end{align*}
 
     \pause
 
-    $\tilde{f}$ is convex differentiable, infinite at the infinite, its minimum is achieved in:
-    %
+    The \alert{surrogate} is minimized.
+    $\tilde{f}$ is convex differentiable, infinite at the infinite (coercive), its minimum $w^*$ is achieved where gradient is 0:
+
     \begin{align*}
-        0 = \nabla f (w^{k+1}) = \nabla f (w^{k}) + L (w^{k+1} - w^{k})
+        0 = \nabla \tilde{f} (w^*) = \nabla f (w^{k}) + L (w^* - w^{k})
     \end{align*}
 
     \pause
-    This leads to the gradient descent update
-    %
+    Taking $w^{k+1}$ as the minimizer of $\tilde{f}$ leads to \alert{gradient descent}:
+
     \begin{align*}
         w^{k+1} = w^k - \frac{1}{L} \nabla f (w^k)
     \end{align*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Example of GD}
