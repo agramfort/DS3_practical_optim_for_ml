@@ -1,4 +1,8 @@
-# Course `OPTIMIZATION FOR MACHINE LEARNING "HANDS ON"` at [DS3 summer school](https://www.ds3-datascience-polytechnique.fr/)
+# `OPTIMIZATION FOR MACHINE LEARNING "HANDS ON"`
+
+# Course at [DS3 summer school 2021](https://www.ds3-datascience-polytechnique.fr/)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/agramfort/DS3_practical_optim_for_ml/)
 
 ### Instructors
 
@@ -11,4 +15,4 @@ Modern machine learning heavily relies on optimization tools, typically to minim
 
 ### Requirements
 
-Python (>=3.6) with numpy, scipy and matplotlib	
+Python (>=3.6) with numpy, scipy and matplotlib
