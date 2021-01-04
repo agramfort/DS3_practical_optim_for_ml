@@ -9,7 +9,7 @@ device = torch.device("cpu")
 lambd = 0.1
 
 def f(w):
-    pobj = np.sum(np.log(1. + np.exp(- y * np.dot(X, w)))) + lamdb / 2. * np.sum(w**2)
+    pobj = np.sum(np.log(1. + np.exp(- y * np.dot(X, w)))) + lambd / 2. * np.sum(w**2)
     return pobj
 
 def f_grad_torch(w, X=X, y=y):
